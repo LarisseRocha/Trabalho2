@@ -21,19 +21,43 @@
 <table>
     <thead>
         <tr>
-            <th>Aluno</th>
             <th>Nome</th>
+            <th>Ingresso</th>
+            <th>Nota</th>
         </tr>
     </thead>
 <tbody>
 {% for aluno in alunos %}
    <tr>
-       <td><a href="">{{ aluno.nome }}</a></td>
-       <td>{{ aluno.nome }}</td>
+       <td><a href="{% url 'aluno' aluno.id %}">{{ aluno.nome }}</a></td>
+       <td>{{ aluno.ingresso }}</td>
+       <td>{{ aluno.nota }}</td>
    </tr>
 {% endfor %}
 </tbody>
 </table>
+
+<!-- <table>
+    <thead>
+        <tr>
+            <th>nome</th>
+            <th>ingresso</th>
+             <th>nota</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for produto in produtos %}
+        <tr>
+            <td><a href="">{{aluno.nome }}</a></td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.ingresso }}</td>
+            <td>{{ aluno.data }}</td>
+        </tr>
+{% endfor %}
+   </tbody>
+   </table>
+    </tbody>
+</table> -->
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Nome do aluno</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Aluno</th>
+          <th>Ingresso</th>
+          <th>Nota</th>
+        </tr>
+      </thead>
+<tbody>
+    <tr>
+      <td><a href="{% url 'index' %}">{{ aluno.nome }}</a></td>
+      <td>{{ aluno.preco }}</td>
+      <td>{{ aluno.estoque }}</td>
+    </tr>
+</tbody>
+</table>
+
+</body>
+</html>

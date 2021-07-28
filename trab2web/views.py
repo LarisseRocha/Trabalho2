@@ -1,21 +1,17 @@
 from django.shortcuts import render
 from .forms import AlunoForm
-from django.contrib import  messages
+from django.contrib import messages
 from trab2web.models import Aluno
 # Create your views here.
 
 def index(request):
-    alunos = Aluno.objects.all()
 
     testChave = {
-
-         'alunos': alunos
+         'alunos': Aluno.objects.all()
 
     }
     return render(request, 'index.html', testChave)
 
-def index(request):
-    return render(request, 'index.html')
 
 def aluno(request):
     form = AlunoForm(request.POST or None)
@@ -38,3 +34,14 @@ def aluno(request):
     }
 
     return render(request, 'index.html', context)
+
+def aluno(request, id):
+    aluno = Aluno.objects.get(id=id)
+    context = {
+
+        'aluno': aluno
+
+    }
+    return render(request, 'aluno.html', context)
+
+
