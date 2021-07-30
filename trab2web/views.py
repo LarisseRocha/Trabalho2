@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from .forms import AlunoForm
+from .forms import AlunoModelForm
 from django.contrib import messages
 from trab2web.models import Aluno
+from django.shortcuts import redirect
 # Create your views here.
 
 def index(request):
@@ -13,35 +14,38 @@ def index(request):
     return render(request, 'index.html', testChave)
 
 
-def aluno(request):
-    form = AlunoForm(request.POST or None)
-    if str(request.method) == 'POST':
+'''def aluno(request):
+    if str(request.user) != 'AnonymousUser':
+        if str(request.method) == 'POST':
+            form = AlunoModelForm(request.POST or None)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Cadastro realizado  com sucesso')
+                form = AlunoModelForm()
+            else:
+                 messages.error(request, 'Erro cadastrar')
+        else:
 
-      if form.is_valid():
-         messages.success(request, 'Cadastro realizado  com sucesso')
-         form =AlunoForm()
+            form: AlunoModelForm()
+            context = {
 
+                'form': form
+            }
 
-
+        return render(request, 'aluno.html', context)
     else:
+        return redirect('index')'''
 
-        messages.error(request, 'Erro cadastrar')
-
-    context = {
-
-        'form': form
-
-    }
-
-    return render(request, 'index.html', context)
 
 def aluno(request, id):
-    aluno = Aluno.objects.get(id=id)
-    context = {
+    if str(request.user) != 'AnonymousUser':
+        aluno = Aluno.objects.get(id=id)
+        context = {
 
-        'aluno': aluno
+            'aluno': aluno
 
-    }
-    return render(request, 'aluno.html', context)
-
+         }
+        return render(request, 'aluno.html', context)
+    else:
+        return redirect('index')
 

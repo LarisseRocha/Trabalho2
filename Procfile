@@ -1,0 +1,1 @@
+web: gunicorn trab2web.wsgi --log-file -
